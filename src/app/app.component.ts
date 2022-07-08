@@ -2,9 +2,10 @@ import { Component, VERSION } from '@angular/core';
 
 @Component({
   selector: 'my-app',
-  templateUrl: './app.component.html',
-  styleUrls: [ './app.component.css' ]
+  template: `
+    <div class="container">
+      <app-pipes></app-pipes>
+    </div>
+  `,
 })
-export class AppComponent  {
-  name = 'Angular ' + VERSION.major;
-}
+export class AppComponent {}

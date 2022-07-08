@@ -1,0 +1,159 @@
+<ng-container *ngIf="{ observableData: observableData$ | async } as data">
+  <div class="row mt-3">
+    <div class="col-12">
+      <div class="card">
+        <h4 class="card-header">
+          <a href="https://angular.io/api/common#pipes" target="_blank"
+            >Angular Pipes</a
+          >
+        </h4>
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <h6 class="card-title" style="color: red">Without pipes</h6>
+              <div class="card-text">
+                <label class="label"
+                  ><b>ID:</b> {{ data.observableData.id }}</label
+                ><br />
+                <label class="label"
+                  ><b>Name:</b>
+                  {{
+                    data.observableData.firstName +
+                      ' ' +
+                      data.observableData.lastName
+                  }}</label
+                ><br />
+                <label class="label"
+                  ><b>SSN:</b> {{ data.observableData.ssn }}</label
+                ><br />
+                <label class="label"
+                  ><b>Department:</b>
+                  {{ data.observableData.department }}</label
+                ><br />
+                <label class="label"
+                  ><b>Birthday:</b> {{ data.observableData.birthday }}</label
+                ><br />
+                <label class="label"
+                  ><b>Salary:</b> {{ data.observableData.salary }}</label
+                ><br />
+                <label class="label"
+                  ><b>Martial Status:</b>
+                  {{ data.observableData.martialStatus }}</label
+                ><br />
+                <label class="label"
+                  ><b>Address:</b> {{ data.observableData.address }}</label
+                ><br />
+                <label class="label"
+                  ><b>isManager:</b>
+                  {{ data.observableData.isManager | json }}</label
+                ><br />
+                <label class="label"
+                  ><b>Skills:</b> {{ data.observableData.skills | json }}</label
+                >
+              </div>
+            </div>
+            <div class="col">
+              <h6 class="card-title" style="color: red">With pipes</h6>
+              <div
+                class="card-text"
+                *ngIf="{ observableData: observableData$ | async } as data"
+              >
+                <label class="label"
+                  ><b>ID:</b> {{ data.observableData.id }}</label
+                ><br />
+                <label class="label"
+                  ><b>Name:</b>
+                  {{
+                    data.observableData.firstName +
+                      ' ' +
+                      data.observableData.lastName | titlecase
+                  }}</label
+                ><br />
+                <label class="label"
+                  ><b>SSN:</b> {{ data.observableData.ssn | number }}</label
+                ><br />
+                <label class="label"
+                  ><b>Department:</b>
+                  {{ data.observableData.department }}</label
+                ><br />
+                <label class="label"
+                  ><b>Birthday:</b>
+                  {{ data.observableData.birthday | date: 'dd.MM.yyyy' }}</label
+                ><br />
+                <label class="label"
+                  ><b>Salary:</b>
+                  {{ data.observableData.salary | currency }}</label
+                ><br />
+                <label class="label"
+                  ><b>Salary Percentage:</b>
+                  {{ data.observableData.salaryPercentage | percent }}</label
+                ><br />
+                <label class="label"
+                  ><b>Martial Status:</b>
+                  {{ data.observableData.martialStatus | lowercase }}</label
+                ><br />
+                <label class="label"
+                  ><b>Address:</b>
+                  {{
+                    data.observableData.address | uppercase | slice: -8
+                  }}</label
+                ><br />
+                <label class="label"
+                  ><b>isManager:</b>
+                  {{
+                    'manager' | i18nSelect: data.observableData.isManager
+                  }}</label
+                ><br />
+                <label class="label"
+                  ><b>Skills:</b>
+                  {{
+                    data.observableData.skills.length | i18nPlural: skills
+                  }}</label
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-6">
+      <div class="card">
+        <h4 class="card-header">
+          <a href="https://angular.io/api/common/JsonPipe" target="_blank"
+            >JsonPipe</a
+          >
+        </h4>
+        <div class="card-body">
+          <h6 class="card-title">
+            Converts a value into its JSON-format representation. Useful for
+            debugging.
+          </h6>
+          <div class="card-text">
+            <code>{{ observableData$ | async | json }}</code>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="card">
+        <h4 class="card-header">
+          <a href="https://angular.io/api/common/KeyValuePipe" target="_blank"
+            >KeyValuePipe</a
+          >
+        </h4>
+        <div class="card-body">
+          <h6 class="card-title">
+            Transforms Object or Map into an array of key value pairs.
+          </h6>
+          <div class="card-text">
+            <div *ngFor="let data of data.observableData | keyvalue">
+              {{ data.key }} &mdash; {{ data.value }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
