@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { User } from '../../core/model/user';
-import { userData } from '../../core/utils/data';
+import { userData } from '../../core/utils/user-data';
 
 @Component({
   selector: 'app-pipes',

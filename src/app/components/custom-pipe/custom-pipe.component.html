@@ -1,0 +1,23 @@
+<div class="card">
+  <h4 class="card-header">Custom Pipe (Filter)</h4>
+  <div class="card-body">
+    <div class="card-text">
+      <label for="searchId" class="form-label">Search Email</label>
+      <input
+        [(ngModel)]="searchEmail"
+        id="searchId"
+        type="text"
+        class="form-control mb-3"
+        placeholder="Search"
+      />
+      <ul class="list-group">
+        <li
+          *ngFor="let data of commentData | filterSearch: searchEmail"
+          class="list-group-item"
+        >
+          {{ data.email }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
